@@ -1,0 +1,13 @@
+.save{
+     display: inline-block;
+     width:300px;
+     background-color: green;
+     text-align:center;
+     color:black;
+     border-color: black;
+     border-width:1px;
+     border-style:solid;
+}
+.tabel2{
+    margin:20px;
+}

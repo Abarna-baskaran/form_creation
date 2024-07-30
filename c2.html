@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="java.js"></script>
+</head>
+<body>
+    <center>
+        <h1>STUDENT FORM</h1>
+        <table class="tabel1" border="1" style="width:300px;height:100px">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" class="name" placeholder="Your Name"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="number" class="age" placeholder="Your Age"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="female" id="female">
+                    <label for="female">Female</label>
+                    <input type="radio" name="gender" value="male" id="male">
+                    <label for="male">Male</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>
+                    <select class="course">
+                        <option>Python</option>
+                        <option>C</option>
+                        <option>JavaScript</option>
+                        <option>HTML</option>
+                        <option>CSS</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" class="email" placeholder="Your Email"></td>
+            </tr>
+        </table>
+        <button class="save">Save</button>
+    </center>
+    <center>
+        <table class="tabel2" border="1" style="width:300px">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Course</th>
+                <th>Email</th>
+            </tr>
+        </table>
+    </center>
+    <script>
+        var save = document.querySelector(".save");
+        var nameInput = document.querySelector(".name");
+        var ageInput = document.querySelector(".age");
+        var genderInputs = document.querySelectorAll("input[name='gender']");
+        var courseSelect = document.querySelector(".course");
+        var emailInput = document.querySelector(".email");
+        var tabel2 = document.querySelector(".tabel2");
+
+        save.addEventListener("click", function() {
+            var newRow = tabel2.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+
+            cell1.textContent = nameInput.value;
+            cell2.textContent = ageInput.value;
+            
+            genderInputs.forEach(function(genderInput) {
+                if (genderInput.checked) {
+                    cell3.textContent = genderInput.value;
+                }
+            });
+
+            cell4.textContent = courseSelect.value;
+            cell5.textContent = emailInput.value;
+
+            // Clear the form inputs after saving
+            nameInput.value = "";
+            ageInput.value = "";
+            genderInputs.forEach(function(genderInput) {
+                genderInput.checked = false;
+            });
+            courseSelect.value = "";
+            emailInput.value = "";
+        });
+    </script>
+</body>
+</html>
+
